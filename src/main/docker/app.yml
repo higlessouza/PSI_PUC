@@ -1,0 +1,22 @@
+version: '2'
+services:
+  psi-app:
+    image: psi
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://psi-mysql:3306/psi?useUnicode=true&characterEncoding=utf8&useSSL=false&createDatabaseIfNotExist=true
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://psi-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://psi-elasticsearch:9200
+    ports:
+      - 8080:8080
+  psi-mysql:
+    extends:
+      file: mysql.yml
+      service: psi-mysql
+  psi-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: psi-elasticsearch
