@@ -2,10 +2,11 @@
     <h2 id="page-heading">
         <span>Times</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-time" [routerLink]="['/time/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-time"
+            [routerLink]="['/time/new']">
             <fa-icon icon="plus"></fa-icon>
             <span class="hidden-sm-down">
-            Create a new Time
+                Criar novo time
             </span>
         </button>
     </h2>
@@ -18,7 +19,8 @@
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch"
+                        name="currentSearch" placeholder="Buscar">
 
                     <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon icon="search"></fa-icon>
@@ -33,44 +35,47 @@
     </div>
 
     <div class="alert alert-warning" id="no-result" *ngIf="times?.length === 0">
-        <span>No times found</span>
+        <span>Nenhum time foi encontrado :(</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="times?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="nome"><span>Nome</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="escudo"><span>Escudo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="id"><span>ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="nome"><span>Nome</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="escudo"><span>Escudo</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+                [infiniteScrollDistance]="0">
                 <tr *ngFor="let time of times ;trackBy: trackId">
                     <td><a [routerLink]="['/time', time.id, 'view']">{{ time.id }}</a></td>
                     <td>{{ time.nome }}</td>
-                    <td>{{ time.escudo }}</td>
+                    <td> <img class="escudoTabela" src="{{time.escudo}}" alt="{{ time.nome }}"></td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/time', time.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/time', time.id, 'view']" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline">View</span>
+                                <span class="d-none d-md-inline">Detalhes</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/time', time.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/time', time.id, 'edit']"
+                                class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline">Edit</span>
+                                <span class="d-none d-md-inline">Editar</span>
                             </button>
 
-                            <button type="submit" (click)="delete(time)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(time)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline">Delete</span>
+                                <span class="d-none d-md-inline">Excluir</span>
                             </button>
                         </div>
                     </td>

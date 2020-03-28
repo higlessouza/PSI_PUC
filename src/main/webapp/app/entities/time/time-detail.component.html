@@ -2,6 +2,7 @@
     <div class="col-8">
         <div *ngIf="time">
             <h2><span>Time</span> {{ time.id }}</h2>
+            <h2>{{ time.nome }}</h2>
 
             <hr>
 
@@ -9,12 +10,16 @@
 
             <dl class="row-md jh-entity-details">
                 <dt><span>Nome</span></dt>
+                <dt><span>Id</span></dt>
                 <dd>
                     <span>{{ time.nome }}</span>
+                    <span>{{ time.id }}</span>
                 </dd>
                 <dt><span>Escudo</span></dt>
                 <dd>
                     <span>{{ time.escudo }}</span>
+                    <!-- <span>{{ time.escudo }}</span>-->
+                    <img class="escudo" src="{{time.escudo}}" alt="{{ time.nome }}">
                 </dd>
             </dl>
 
@@ -22,13 +27,18 @@
                     (click)="previousState()"
                     class="btn btn-info">
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            <button type="submit" (click)="previousState()" class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Voltar</span>
             </button>
 
             <button type="button"
                     [routerLink]="['/time', time.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            <button type="button" [routerLink]="['/time', time.id, 'edit']" class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
             </button>
         </div>
     </div>
+</div>
 </div>
