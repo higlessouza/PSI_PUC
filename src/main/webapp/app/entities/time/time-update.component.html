@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-time-heading">Create or edit a Time</h2>
+            <h2 id="jhi-time-heading">Criar ou editar Time</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,24 +13,22 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_nome">Nome</label>
-                    <input type="text" class="form-control" name="nome" id="field_nome"
-                           formControlName="nome"/>
-                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('nome')?.errors?.required">
-                        This field is required.
+                    <input type="text" class="form-control" name="nome" id="field_nome" formControlName="nome" />
+                    <div
+                        *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('nome')?.errors?.required">
+                            Este campo é obrigatório.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_escudo">Escudo</label>
-                    <input type="text" class="form-control" name="escudo" id="field_escudo"
-                           formControlName="escudo"/>
-                    <div *ngIf="editForm.get('escudo')!.invalid && (editForm.get('escudo')!.dirty || editForm.get('escudo')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('escudo')?.errors?.required">
-                        This field is required.
+                    <input type="text" class="form-control" name="escudo" id="field_escudo" formControlName="escudo" />
+                    <div
+                        *ngIf="editForm.get('escudo')!.invalid && (editForm.get('escudo')!.dirty || editForm.get('escudo')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('escudo')?.errors?.required">
+                            Este campo é obrigatório.
                         </small>
                     </div>
                 </div>
@@ -38,11 +36,12 @@
 
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Salvar</span>
                 </button>
             </div>
         </form>
