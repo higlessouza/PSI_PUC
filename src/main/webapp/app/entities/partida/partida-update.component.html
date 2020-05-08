@@ -1,0 +1,76 @@
+<!-- <link rel="stylesheet" href="./partida-update.component.css"> -->
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-partida-heading">Criar ou editar uma partida</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <!-- <div class="form-group" [hidden]="!editForm.get('id')!.value">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+        </div> -->
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mandanteID">Mandante</label>
+          <input type="hidden" class="form-control" name="mandanteID" id="field_mandanteID" formControlName="mandanteID" />
+
+          <div class="busca">
+            <input formControlName="mandanteNome" type="text" class="form-control" (keyup)="buscaTime($event, 'mandante')"/>
+            <div class="busca__resultados" [hidden]="!mandante.length">
+              <div *ngFor="let time of mandante" class="busca__resultados__time" (click)="selecionaTime($event, 'mandante')" id="{{time.id}}">
+                {{ time.nome }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_visitanteID">Visitante</label>
+          <input type="hidden" class="form-control" name="visitanteID" id="field_visitanteID" formControlName="visitanteID" />
+
+          <div class="busca">
+            <input formControlName="visitanteNome" type="text" class="form-control" (keyup)="buscaTime($event, 'visitante')"/>
+            <div class="busca__resultados" [hidden]="!visitante.length">
+              <div *ngFor="let time of visitante" class="busca__resultados__time" (click)="selecionaTime($event, 'visitante')" id="{{time.id}}">
+                {{ time.nome }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_golsMandante">Gols Mandante</label>
+            <input type="number" class="form-control" name="golsMandante" id="field_golsMandante" formControlName="golsMandante" />
+          </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_golsVisitante">Gols Visitante</label>
+          <input type="number" class="form-control" name="golsVisitante" id="field_golsVisitante" formControlName="golsVisitante" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_local">Local</label>
+          <input type="text" class="form-control" name="local" id="field_local" formControlName="local" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_campeonato">Campeonato</label>
+          <input type="number" class="form-control" name="campeonato" id="field_campeonato" formControlName="campeonato" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="partida">
+      <!-- <h2><span>Partida</span> {{ partida.id }}</h2> -->
+      <h2>
+        <span>{{ getTime(partida.mandanteID) }}</span> <span>{{ partida.golsMandante }}</span> x
+        <span>{{ partida.golsVisitante }}</span> <span>{{ getTime(partida.visitanteID) }}</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Local</span></dt>
+        <dd>
+          <span>{{ partida.local }}</span>
+        </dd>
+        <dt><span>Campeonato</span></dt>
+        <dd>
+          <span>{{ partida.campeonato }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/partida', partida.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

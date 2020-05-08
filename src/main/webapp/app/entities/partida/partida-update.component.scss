@@ -1,0 +1,21 @@
+.busca {
+  position: relative;
+  .busca__resultados {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    max-height: 100px;
+    overflow: auto;
+    border-bottom: 1px solid lightgray;
+    .busca__resultados__time {
+      cursor: pointer;
+      border: 1px solid lightgrey;
+      padding: 5px 12px 0;
+      &:hover {
+        font-weight: bolder;
+        background-color: lightgray;
+        border-bottom: 1px solid lightgrey;
+      }
+    }
+  }
+}
