@@ -45,6 +45,7 @@ public class CacheConfiguration {
             createCache(cm, com.pucminas.psi.domain.PersistentToken.class.getName());
             createCache(cm, com.pucminas.psi.domain.User.class.getName() + ".persistentTokens");
             createCache(cm, com.pucminas.psi.domain.Time.class.getName());
+            createCache(cm, com.pucminas.psi.domain.Partida.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

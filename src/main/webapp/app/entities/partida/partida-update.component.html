@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-partida-heading">Create or edit a Partida</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mandanteID">Mandante ID</label>
+                    <input type="number" class="form-control" name="mandanteID" id="field_mandanteID"
+                           formControlName="mandanteID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visitanteID">Visitante ID</label>
+                    <input type="number" class="form-control" name="visitanteID" id="field_visitanteID"
+                           formControlName="visitanteID"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mandanteGols">Mandante Gols</label>
+                    <input type="number" class="form-control" name="mandanteGols" id="field_mandanteGols"
+                           formControlName="mandanteGols"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_visitanteGols">Visitante Gols</label>
+                    <input type="number" class="form-control" name="visitanteGols" id="field_visitanteGols"
+                           formControlName="visitanteGols"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_local">Local</label>
+                    <input type="text" class="form-control" name="local" id="field_local"
+                           formControlName="local"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_campeonato">Campeonato</label>
+                    <input type="number" class="form-control" name="campeonato" id="field_campeonato"
+                           formControlName="campeonato"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
